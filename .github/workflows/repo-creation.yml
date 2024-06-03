@@ -33,3 +33,8 @@ jobs:
         run: gh workflow list --all
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Disable workflows
+        run: gh workflow disable Repo-Creation
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
