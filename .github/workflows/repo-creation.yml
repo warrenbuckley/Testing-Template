@@ -29,7 +29,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
     
-      - name: Create Repo
-        run: gh workflow disable Repo-Creation
+      - name: List workflows
+        run: gh workflow list --all
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
