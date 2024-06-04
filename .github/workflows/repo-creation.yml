@@ -18,8 +18,16 @@ on:
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a single job called "Setup_Project"
+  Setup_Project:
+
+    # We will only run this action when:
+    # This repository isn't the template repository
+    # Reference https://docs.github.com/en/actions/learn-github-actions/contexts
+    # Reference https://docs.github.com/en/actions/learn-github-actions/expressions
+    if: >-
+      ${{ !github.event.repository.is_template }}
+  
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -27,6 +35,10 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
+       # Runs a single command using the runners shell
+      - name: See all env variables with set
+        run: set
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
