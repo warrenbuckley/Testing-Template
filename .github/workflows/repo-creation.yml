@@ -123,7 +123,7 @@ jobs:
 
       - name: Add RCL project reference to Website project
         shell: pwsh
-        run: dotnet add "$env:UMBRACO_PATH_WEBSITE_CSPROJ reference $env:UMBRACO_PATH_RCL_CSPROJ"
+        run: dotnet add $env:UMBRACO_PATH_WEBSITE_CSPROJ reference $env:UMBRACO_PATH_RCL_CSPROJ
 
       ## For vite to be happy it needs to be lowercase
       - name: Create Vite TypeScript & Lit setup
