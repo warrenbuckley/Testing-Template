@@ -42,6 +42,7 @@ jobs:
           $RCLProjectName = $ProjectName
           $RCLProjectCSProj = $RCLProjectName + '.csproj'
           $ClientProjectName = $ProjectName + '.Client'
+          $ClientProjectNameLower = $ClientProjectName.ToLower()
 
           ## Folder Paths
           $RootFolder = $env:GITHUB_WORKSPACE
@@ -59,7 +60,7 @@ jobs:
           "UMBRACO_RCL_PROJECT_NAME=$RCLProjectName" | Out-File -FilePath $env:GITHUB_ENV -Append
           "UMBRACO_RCL_PROJECT_CSPROJ=$RCLProjectCSProj" | Out-File -FilePath $env:GITHUB_ENV -Append
           "UMBRACO_CLIENT_PROJECT_NAME=$ClientProjectName" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "UMBRACO_CLIENT_PROJECT_NAME_LOWER=$ClientProjectName.ToLower()" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "UMBRACO_CLIENT_PROJECT_NAME_LOWER=$ClientProjectNameLower" | Out-File -FilePath $env:GITHUB_ENV -Append
 
           "UMBRACO_PATH_ROOT_FOLDER=$RootFolder" | Out-File -FilePath $env:GITHUB_ENV -Append
           "UMBRACO_PATH_WEBSITE=$WebsiteProjectPath" | Out-File -FilePath $env:GITHUB_ENV -Append
