@@ -100,7 +100,7 @@ jobs:
         run: dotnet new install Umbraco.Templates
 
       - name: Create Umbraco Website
-        shell: powershell
+        shell: pwsh
         run: dotnet new umbraco -n $env:UMBRACO_WEBSITE_PROJECT_NAME
 
       - name: Create Umbraco RCL
