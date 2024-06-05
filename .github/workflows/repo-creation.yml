@@ -37,6 +37,39 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      - name: Setup Project Name and Path Variables
+        shell: pwsh
+        run: |
+          $Repo = $env:GITHUB_REPOSITORY # warrenbuckley/my-awesome-idea
+          $Repo = $Repo.Split("/")[1] # my-awesome-idea
+
+          $ProjectName = $Repo.Replace(" ", ".")
+          $ProjectNameLower = $ProjectName.ToLower()
+          $WebsiteProjectName = $ProjectName + '.Website'
+          $WebsiteProjectCSProj = $WebsiteProjectName + '.csproj'
+          $RCLProjectName = $ProjectName
+          $RCLProjectCSProj = $RCLProjectName + '.csproj'
+          $ClientProjectName = $ProjectName + '.Client'
+
+          "project_name=$ProjectName" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "project_name_lower=$ProjectNameLower" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "website_project_name=$WebsiteProjectName" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "website_project_csproj=$WebsiteProjectCSProj" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "rcl_project_name=$RCLProjectName" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "rcl_project_csproj=$RCLProjectCSProj" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "client_project_name=$ClientProjectName" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Verify Variables
+        shell: pwsh
+        run: |
+          Write-Output "project_name: $env:project_name"
+          Write-Output "project_name_lower: $env:project_name_lower"
+          Write-Output "website_project_name: $env:website_project_name"
+          Write-Output "website_project_csproj: $env:website_project_csproj"
+          Write-Output "rcl_project_name: $env:rcl_project_name"
+          Write-Output "rcl_project_csproj: $env:rcl_project_csproj"
+          Write-Output "client_project_name: $env:client_project_name"
+
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
