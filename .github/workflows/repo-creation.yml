@@ -211,7 +211,7 @@ jobs:
       - name: Add .vscode folder and recommended lit extension
         shell: pwsh
         run: |
-          New-Item -Path "$env:UMBRACO_PATH_CLIENT/.vscode" -ItemType Directory
+          New-Item -Path $env:UMBRACO_PATH_CLIENT/.vscode -ItemType Directory
           $ExtensionsJson = @"
           {
               "recommendations": [
