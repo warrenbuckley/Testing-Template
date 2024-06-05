@@ -211,7 +211,7 @@ jobs:
       - name: Add .vscode folder and recommended lit extension
         shell: pwsh
         run: |
-          New-Item -Path $env:UMBRACO_PATH_CLIENT/.vscode -ItemType Directory
+          New-Item -Path "$env:UMBRACO_PATH_CLIENT/.vscode" -ItemType Directory
           $ExtensionsJson = @"
           {
               "recommendations": [
@@ -219,7 +219,7 @@ jobs:
               ]
           }
           "@
-          $ExtensionsJson | Out-File -FilePath "$ExtensionsJsonPath/.vscode/extensions.json" -Encoding utf8
+          $ExtensionsJson | Out-File -FilePath "$env:UMBRACO_PATH_CLIENT/.vscode/extensions.json" -Encoding utf8
 
       - name: Update package.json scripts with watch and remove dev and 'preview'
         shell: pwsh
