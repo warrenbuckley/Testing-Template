@@ -6,7 +6,7 @@ on:
 # Reference https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 # Need to set the permissions to disable this action once we are done
-# So its only ever run one time
+# So its only ever run one time 
 permissions:
   actions: write
   contents: write
