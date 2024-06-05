@@ -68,6 +68,10 @@ jobs:
           "UMBRACO_PATH_RCL_CSPROJ=$RCLCSProjPath" | Out-File -FilePath $env:GITHUB_ENV -Append
           "UMBRACO_PATH_CLIENT=$ClientProjectPath" | Out-File -FilePath $env:GITHUB_ENV -Append
 
+      - name: Dump Environment Variables
+        shell: pwsh
+        run: env
+
       - name: Verify Variables can be read from further steps
         shell: pwsh
         run: |
