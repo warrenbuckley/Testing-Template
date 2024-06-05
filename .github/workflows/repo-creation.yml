@@ -9,6 +9,7 @@ on:
 # So its only ever run one time
 permissions:
   actions: write
+  contents: write
 
 jobs:
   Init_Creation:
