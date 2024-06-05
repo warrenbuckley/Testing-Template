@@ -47,9 +47,9 @@ jobs:
           $RootFolder = $env:GITHUB_WORKSPACE
           $WebsiteProjectPath = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath $WebsiteProjectName
           $WebsiteCSProjPath = Join-Path -Path $WebsiteProjectPath -ChildPath $WebsiteProjectCSProj
-          $RCLProjectPath = Join-Path -Path $PSScriptRoot -ChildPath $RCLProjectName
+          $RCLProjectPath = Join-Path -Path $RootFolder -ChildPath $RCLProjectName
           $RCLCSProjPath = Join-Path -Path $RCLProjectPath -ChildPath $RCLProjectCSProj
-          $ClientProjectPath = Join-Path -Path $PSScriptRoot -ChildPath $ClientProjectName
+          $ClientProjectPath = Join-Path -Path $RootFolder -ChildPath $ClientProjectName
 
           ## Set the environment variables for the rest of the workflow
           "UMBRACO_PROJECT_NAME=$ProjectName" | Out-File -FilePath $env:GITHUB_ENV -Append
