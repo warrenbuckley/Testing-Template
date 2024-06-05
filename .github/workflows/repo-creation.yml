@@ -44,8 +44,8 @@ jobs:
           $ClientProjectName = $ProjectName + '.Client'
 
           ## Folder Paths
-          $RootFolder = $PSScriptRoot
-          $WebsiteProjectPath = Join-Path -Path $PSScriptRoot -ChildPath $WebsiteProjectName
+          $RootFolder = $env:GITHUB_WORKSPACE
+          $WebsiteProjectPath = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath $WebsiteProjectName
           $WebsiteCSProjPath = Join-Path -Path $WebsiteProjectPath -ChildPath $WebsiteProjectCSProj
           $RCLProjectPath = Join-Path -Path $PSScriptRoot -ChildPath $RCLProjectName
           $RCLCSProjPath = Join-Path -Path $RCLProjectPath -ChildPath $RCLProjectCSProj
@@ -67,40 +67,6 @@ jobs:
           "UMBRACO_PATH_RCL=$RCLProjectPath" | Out-File -FilePath $env:GITHUB_ENV -Append
           "UMBRACO_PATH_RCL_CSPROJ=$RCLCSProjPath" | Out-File -FilePath $env:GITHUB_ENV -Append
           "UMBRACO_PATH_CLIENT=$ClientProjectPath" | Out-File -FilePath $env:GITHUB_ENV -Append
-
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-        
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-
-      - name: Dump Environment Variables
-        shell: pwsh
-        run: env
 
       - name: Verify Variables can be read from further steps
         shell: pwsh
