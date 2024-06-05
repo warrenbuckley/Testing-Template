@@ -233,13 +233,13 @@ jobs:
 
       - name: Add @umbraco-cms/backoffice from npm as dev-dependency
         shell: pwsh
-        working-directory: $env:UMBRACO_PATH_CLIENT
+        working-directory: ${{ env.UMBRACO_PATH_CLIENT }}
         run: npm install --save-dev @umbraco-cms/backoffice
 
       # Compile the TS to JS & it will copy it out to the RCL project in the wwwroot folder
       - name: Inital build of client project
         shell: pwsh
-        working-directory: $env:UMBRACO_PATH_CLIENT
+        working-directory: ${{ env.UMBRACO_PATH_CLIENT }}
         run: npm run build
 
       # Build the VS solution (building will generate the JSON schema for umbraco-package.json that we reference)
