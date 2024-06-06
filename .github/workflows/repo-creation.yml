@@ -36,7 +36,7 @@ jobs:
           $Repo = $env:GITHUB_REPOSITORY # warrenbuckley/my-awesome-idea
           $Repo = $Repo.Split("/")[1] # my-awesome-idea
 
-          $ProjectName = $Repo.Replace(" ", ".")
+          $ProjectName = $Repo.Replace(" ", ".").Replace("-", ".").Replace("_", ".")
           $ProjectNameLower = $ProjectName.ToLower()
           $WebsiteProjectName = $ProjectName + '.Website'
           $WebsiteProjectCSProj = $WebsiteProjectName + '.csproj'
@@ -268,9 +268,9 @@ jobs:
       - name: Write to Job Summary
         shell: pwsh
         run: |
-          "# Generated Project" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "# :rocket: Project Created" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           "The following has been setup for you @$env:GITHUB_ACTOR" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           "" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append # this is a blank line
-          "- $env:UMBRACO_WEBSITE_PROJECT_NAME This project is an sample Umbraco site that allows you to easily test the site" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          "- $env:UMBRACO_RCL_PROJECT_NAME This is an RCL that the client project will copy files into wwwroot. This projects can be used to write any C# code such as APIControllers" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          "- $env:UMBRACO_CLIENT_PROJECT_NAME Open this folder with VSCode editor and start working with the TypeScript files to extend Umbraco backoffice" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "- `$env:UMBRACO_WEBSITE_PROJECT_NAME` This project is an sample Umbraco site that allows you to easily test the site" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "- `$env:UMBRACO_RCL_PROJECT_NAME` This is an RCL that the client project will copy files into wwwroot. This projects can be used to write any C# code such as APIControllers" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "- `$env:UMBRACO_CLIENT_PROJECT_NAME` Open this folder with VSCode editor and start working with the TypeScript files to extend Umbraco backoffice" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
