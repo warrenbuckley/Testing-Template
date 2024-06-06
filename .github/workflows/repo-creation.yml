@@ -6,7 +6,7 @@ on:
 # Reference https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 # Need to set the permissions to disable this action once we are done
-# So its only ever run one time 
+# So its only ever run one time
 permissions:
   actions: write
   contents: write
@@ -145,7 +145,7 @@ jobs:
         shell: pwsh
         run: |
           $viteConfig = @"
-          import { defineConfig } from "vite";
+          import { defineConfig } from 'vite';
 
           export default defineConfig({
             build: {
@@ -154,7 +154,7 @@ jobs:
                 formats: ["es"],
                 fileName: '$env:UMBRACO_PROJECT_NAME_LOWER',
               },
-              outDir: "../$env:UMBRACO_PATH_RCL/wwwroot", // your web component will be saved to the RCL project location and the RCL sets the path as App_Plugins/$env:UMBRACO_RCL_PROJECT_NAME
+              outDir: '../$env:UMBRACO_PATH_RCL/wwwroot', // your web component will be saved to the RCL project location and the RCL sets the path as App_Plugins/$env:UMBRACO_RCL_PROJECT_NAME
               emptyOutDir: true,
               sourcemap: true,
               rollupOptions: {
