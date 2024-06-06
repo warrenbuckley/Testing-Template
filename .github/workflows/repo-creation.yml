@@ -237,7 +237,7 @@ jobs:
         working-directory: ${{ env.UMBRACO_PATH_CLIENT }}
         run: npm install --save-dev @umbraco-cms/backoffice
 
-      # Compile the TS to JS & it will copy it out to the RCL project in the wwwroot folder
+      # Compile the TS to JS & it will copy it out to the RCL project in the wwwroot folder 
       - name: Inital build of client project
         shell: pwsh
         working-directory: ${{ env.UMBRACO_PATH_CLIENT }}
