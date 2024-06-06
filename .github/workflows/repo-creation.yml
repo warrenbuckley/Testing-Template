@@ -267,20 +267,10 @@ jobs:
       # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#example-of-multiline-markdown-content
       - name: Generate list using Markdown
         run: |
-          "# Generated Project" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          "The following has been setup for you @$env:GITHUB_ACTOR" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "This is the lead in sentence for the list" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           "" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append # this is a blank line
-          "- $env:UMBRACO_WEBSITE_PROJECT_NAME This project is an sample Umbraco site that allows you to easily test the site" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          "- $env:UMBRACO_RCL_PROJECT_NAME This is an RCL that the client project will copy files into wwwroot. This projects can be used to write any C# code such as APIControllers" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          "- $env:UMBRACO_CLIENT_PROJECT_NAME Open this folder with VSCode editor and start working with the TypeScript files to extend Umbraco backoffice" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "- Lets add a bullet point" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "- Lets add a second bullet point" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "- How about a third one?" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
 
-      # - name: Write to Job Summary
-      #   shell: pwsh
-      #   run: |
-      #     Write-Output "::group::Job Summary"
-      #     Write-Output "## Umbraco Project Scaffolded & Vite setup added"
-      #     Write-Output "### Project Name: $env:UMBRACO_PROJECT_NAME"
-      #     Write-Output "### Website Project Name: $env:UMBRACO_WEBSITE_PROJECT_NAME"
-      #     Write-Output "### RCL Project Name: $env:UMBRACO_RCL_PROJECT_NAME"
-      #     Write-Output "### Client Project Name: $env:UMBRACO_CLIENT_PROJECT_NAME"
-      #     Write-Output "::endgroup::"
+ 
