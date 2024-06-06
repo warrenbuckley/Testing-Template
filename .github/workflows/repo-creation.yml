@@ -154,7 +154,7 @@ jobs:
                 formats: ["es"],
                 fileName: '$env:UMBRACO_PROJECT_NAME_LOWER',
               },
-              outDir: '../$env:UMBRACO_PATH_RCL/wwwroot', // your web component will be saved to the RCL project location and the RCL sets the path as App_Plugins/$env:UMBRACO_RCL_PROJECT_NAME
+              outDir: '$env:UMBRACO_PATH_RCL/wwwroot', // your web component will be saved to the RCL project location and the RCL sets the path as App_Plugins/$env:UMBRACO_RCL_PROJECT_NAME
               emptyOutDir: true,
               sourcemap: true,
               rollupOptions: {
