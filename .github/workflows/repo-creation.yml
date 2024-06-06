@@ -262,7 +262,7 @@ jobs:
           git checkout -b "initial-setup"
           git add .
           git commit -m "Umbraco Project Scaffolded & Vite setup added"
-          git push
+          git push --set-upstream origin initial-setup
 
       - name: Create a Pull Request
         shell: pwsh
