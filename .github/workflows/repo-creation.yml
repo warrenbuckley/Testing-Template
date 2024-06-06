@@ -249,10 +249,10 @@ jobs:
         run: dotnet build
 
       # We only ever to want to run this once for the repo created from this template so we disable the workflow
-      - name: Disable this workflow now we are done
-        run: gh workflow disable Repo-Creation
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Disable this workflow now we are done
+      #   run: gh workflow disable Repo-Creation
+      #   env:
+      #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create a branch and commit the changes
         shell: pwsh
