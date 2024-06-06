@@ -249,10 +249,10 @@ jobs:
         run: dotnet build
 
       # We only ever to want to run this once for the repo created from this template so we disable the workflow
-      # - name: Disable this workflow now we are done
-      #   run: gh workflow disable Repo-Creation
-      #   env:
-      #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Disable this workflow now we are done
+        run: gh workflow disable Repo-Creation
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit code changes
         shell: pwsh
@@ -271,6 +271,8 @@ jobs:
           "# :rocket: Project Created" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           "The following has been setup for you @$env:GITHUB_ACTOR" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           "" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append # this is a blank line
-          "- `$env:UMBRACO_WEBSITE_PROJECT_NAME` This project is an sample Umbraco site that allows you to easily test the site" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          "- `$env:UMBRACO_RCL_PROJECT_NAME` This is an RCL that the client project will copy files into wwwroot. This projects can be used to write any C# code such as APIControllers" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          "- `$env:UMBRACO_CLIENT_PROJECT_NAME` Open this folder with VSCode editor and start working with the TypeScript files to extend Umbraco backoffice" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "| Project | Notes |" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "|--------|--------|" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "| $env:UMBRACO_WEBSITE_PROJECT_NAME | This project is an sample Umbraco site that allows you to easily test the site |" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "| $env:UMBRACO_RCL_PROJECT_NAME | This is an RCL that the client project will copy files into wwwroot. This projects can be used to write any C# code such as APIControllers |" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "| $env:UMBRACO_CLIENT_PROJECT_NAME | Open this folder with VSCode editor and start working with the TypeScript files to extend Umbraco backoffice |" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
