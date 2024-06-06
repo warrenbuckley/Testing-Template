@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node & NPM
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x ## TODO: Check what version number to use
+          node-version: 20.x
       
       - name: Setup Project Name and Path Variables
         shell: pwsh
@@ -254,15 +254,38 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Do we just use git CLI or use GH CLI instead or... ?!
-      - name: Commit changes
+      - name: Create a branch and commit the changes
         shell: pwsh
         run: |
           git config --global user.email "warren@hackmakedo.com"
           git config --global user.name "Warren Buckley"
+          git checkout -b "initial-setup"
           git add .
           git commit -m "Umbraco Project Scaffolded & Vite setup added"
           git push
 
+      - name: Create a Pull Request
+        shell: pwsh
+        run: |
+          gh pr create --title "Umbraco Project Scaffold" --body "Initial setup of Umbraco project and Vite setup" --assignee $env:GITHUB_ACTOR
+          
       # Write Markdown Job Summary
       # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#example-of-multiline-markdown-content
+      - name: Generate list using Markdown
+        run: |
+          "This is the lead in sentence for the list" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append # this is a blank line
+          "- Lets add a bullet point" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "- Lets add a second bullet point" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "- How about a third one?" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+
+      # - name: Write to Job Summary
+      #   shell: pwsh
+      #   run: |
+      #     Write-Output "::group::Job Summary"
+      #     Write-Output "## Umbraco Project Scaffolded & Vite setup added"
+      #     Write-Output "### Project Name: $env:UMBRACO_PROJECT_NAME"
+      #     Write-Output "### Website Project Name: $env:UMBRACO_WEBSITE_PROJECT_NAME"
+      #     Write-Output "### RCL Project Name: $env:UMBRACO_RCL_PROJECT_NAME"
+      #     Write-Output "### Client Project Name: $env:UMBRACO_CLIENT_PROJECT_NAME"
+      #     Write-Output "::endgroup::"
