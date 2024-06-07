@@ -17,9 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     # We will only run this action when this repository isn't the
     # template repository
-    #
-    # if: >-
-    #   ${{ !github.event.repository.is_template }}
+    if: >-
+      ${{ !github.event.repository.is_template }}
 
     steps:
       - name: Checkout Repository
