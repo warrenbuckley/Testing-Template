@@ -14,7 +14,12 @@ permissions:
 jobs:
   Init_Creation:
     name: Inital Creation
-    runs-on: ubuntu-latest   
+    runs-on: ubuntu-latest
+    # We will only run this action when this repository isn't the
+    # template repository
+    #
+    if: >-
+      ${{ !github.event.repository.is_template }}
     steps:
 
       - name: Checkout Repository
